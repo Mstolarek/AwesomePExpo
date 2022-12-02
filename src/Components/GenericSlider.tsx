@@ -1,9 +1,13 @@
-import React from 'react';
-import {Slider} from '@miblanchard/react-native-slider';
-import {StyleSheet} from 'react-native';
-import {useColorContext} from '../StateManagement/ColorContext/ColorContext';
-export const GenericSlider = props => {
-  const {...other} = props;
+import React from "react";
+import { Slider } from "@miblanchard/react-native-slider";
+import { StyleSheet } from "react-native";
+import { useColorContext } from "../StateManagement/ColorContext/ColorContext";
+import { SliderProps } from "@miblanchard/react-native-slider/lib/types";
+
+export interface GenericSliderProps extends SliderProps {}
+
+export const GenericSlider = (props: GenericSliderProps) => {
+  const { ...other } = props;
   const palette = useColorContext().state;
   const stylesWithPalette = styles(palette);
 
@@ -17,9 +21,9 @@ export const GenericSlider = props => {
   );
 };
 
-const styles = palette =>
+const styles = (palette) =>
   StyleSheet.create({
-    container: {width: '100%'},
+    container: { width: "100%" },
     Slider: {
       color: palette.main,
       backgroundColor: palette.main,

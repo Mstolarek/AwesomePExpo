@@ -1,17 +1,18 @@
-import React from 'react';
-import {StyleSheet} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useColorContext} from '../StateManagement/ColorContext/ColorContext';
-export interface GenericIconProps {}
+import React from "react";
+import { StyleSheet } from "react-native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { useColorContext } from "../StateManagement/ColorContext/ColorContext";
+export interface GenericIconProps
+  extends React.ComponentProps<typeof MaterialCommunityIcons> {}
 
 export const GenericIcon = (props: GenericIconProps) => {
-  const {...other} = props;
+  const { ...other } = props;
   const palette = useColorContext().state;
   const stylesWithPalette = styles(palette);
   return <MaterialCommunityIcons style={stylesWithPalette.icon} {...other} />;
 };
 
-const styles = palette =>
+const styles = (palette) =>
   StyleSheet.create({
     icon: {
       color: palette.main,
